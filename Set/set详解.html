@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 我们可以通过new Set()的方式创建Set构造函数
+        // Set构造函数只能通过new创建，否则报错
+        // let set = new Set();
+        // 当然我们也可以在new的时候给Set添加参数
+        // Set 对象允许存储任何类型无论是原始值还是对象引用，并且在Set中存储的值是唯一的(Set会默认对非引用类型的值去重)，去重后的值按照顺序排列，相同值取首次出现的
+        // let set = new Set([1, 2, 3, 4, 5, 3, 6, 7]);
+        // console.log(set);
+
+        // 我们在创建Set构造函数的时候，无法给Set添加不可迭代的数据，例如：数字、对象、布尔值、NaN
+        // 下面几种方式会报错：
+        // let set = new Set(1);
+        // let set = new Set({});
+        // let set = new Set(true);
+        // let set = new Set(NaN);
+        // 而传入undefined或null会被视为空值，自动返回一个空的Set对象，Set遵循“零值相等”法，类似于同值相等，但 +0 和 -0 被视为相等。
+        // let set = new Set(undefined);
+        // let set = new Set(null);
+        // 若传入字符串类型则会自定被拆分成单个字符
+        // let set = new Set('hello');
+
+        // 我们在创建后可以给Set添加值，此时可以添加任意数据类型，此时可以添加undefined或null，并且添加的值均可迭代(非引用类型值会被去重)
+        // let set = new Set();
+        // set.add(1)
+        // set.add({})
+        // set.add(true)
+        // set.add(NaN)
+        // set.add('hello')
+        // set.add(null)
+        // set.add(undefined)
+        // set.add([8,9])
+        // set.add([{}])
+        // console.log(set)
+        // set.forEach(el => console.log(el))
+
+        // Set不会对引用类型的值去重，下面几种方式会导致无法去重
+        // let set = new Set();
+        // set.add({name: '张三'})
+        // set.add('hello')
+        // set.add({name: '张三'})
+
+        // set.add([{name: '张三'}])
+        // set.add('你好')
+        // set.add([{name: '张三'}])
+
+        // set.add([1,2,3])
+        // set.add('world')
+        // set.add([1,2,3])
+
+        // Set同样也是一个构造函数，也就是说我们也可以在Set的原型上添加属性和方法
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

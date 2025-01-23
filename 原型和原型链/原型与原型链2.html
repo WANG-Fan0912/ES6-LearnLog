@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 构构造函数其实也相当与一个对象，我们可以给构造函数添加自身的属性、方法
+        // function Person(name) {
+        //     this.name = name;
+        // }
+        // const person1 = new Person('hello');
+        // 等同于
+        // const person1 = new Person();
+        // person1.name = 'world';
+        // 若给构造函数添加相同的属性则会覆盖
+        // 在构造函数内部添加属性时，相当于给构造函数的实例创建一个自己独立的属性副本，这个属性是独有的，不会影响到其他实例。
+        // 除了给构造函数添加内部属性外，我们也可以通过原型的方式添加
+        // function Person() {
+        //     this.age = 20;
+        // }
+        // // 添加属性到 Person 的原型
+        // Person.prototype.age = 25;
+
+        // const person1 = new Person();
+        // console.log(person1);
+
+        // 在实例化函数后，优先取函数内部的属性，若函数内部属性没有，则取原型上的属性
+        // function Person() { }
+        // Person.prototype.age = 25;
+        // const person1 = new Person();
+        // console.log(person1.age); // 25 默认拿函数内部属性，发现没有，再从原型上拿
+        // person1.age = 30; // 给函数内部添加属性
+        // console.log(person1.age); // 默认拿到函数内部属性
+        // console.log(person1); // 30
+
+        // 给函数的内部添加属性跟在原型上添加属性是不同的，给函数的内部添加属性是一个私人的操作，而在原型上添加属性则是公共的操作。
+        // ● 私人操作只会对直属目标造成影响
+        // ● 公共操作，通过原型链添加属性时，这个属性会被所有实例共享
+        function Person() { }
+        Person.prototype.age = 25;
+        const person1 = new Person();
+        const person2 = new Person();
+
+        console.log(person1.age); // 输出: 25
+        console.log(person2.age); // 输出: 25
+
+        person1.age = 30;
+        console.log(person1.age); // 输出: 30
+        console.log(person2.age); // 输出: 25
+        // 在原型上添加的属性，所有实例化过该函数的对象都能访问到。
+        // 而实例化后给函数添加的内部属性只有它的直属目标person1能访问到。
+        
+        // 总结：
+        // 构造函数内部设置属性：在对象创建时设置，属于对象自身属性。
+        // 实例化后设置属性：在对象创建后添加，同样属于对象自身属性。
+        // 原型链影响：实例上的属性会遮蔽原型上的同名属性。
+
+    </script>
+</body>
+
+</html>
