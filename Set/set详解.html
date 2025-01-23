@@ -56,10 +56,89 @@
         // set.add([1,2,3])
         // set.add('world')
         // set.add([1,2,3])
+        // 这是因为Set对于引用类型的值，存储的是内存地址的引用，虽然上面的操作都是判断对象，实际上这两个是不同的内存地址，在根本上是两个不同的对象
+        // 如果你改成同一个内存地址的引用，则会得到去重后的结果
+        // let set = new Set();
+        // let name = { name: '张三' }
+        // set.add(name)
+        // set.add('hello')
+        // set.add(name)
+        // let name2 = [{ name: '张三' }]
+        // set.add(name2)
+        // set.add('你好')
+        // set.add(name2)
+        // console.log(set)
+
 
         // Set同样也是一个构造函数，也就是说我们也可以在Set的原型上添加属性和方法
+        // let set = new Set([1, 2, 3]);
+        // set.mytext = 'hello'
+        // Set.prototype.hello = '你好'
+        // console.log(set)
+
+        // Set内部为我们提供了很多方法可供我们使用：
+        // let set = new Set();
+        // let value = 'hello'
+        // // 给Set内部按顺序添加变量
+        // set.add(value)
+
+        // // 判断变量在set内是否存在
+        // let state = set.has(value)
+
+        // // 返回set的长度
+        // let size = set.size
+
+        // // 返回一个新的迭代器对象，该对象为Set内每个元素的 [value, value] 数组，每项的 key 和 value 都相同。
+        // // 可以看成是数组的entries遍历方法相同的返回值，新的迭代器对象可被forEach和for...of等方法遍历
+        // // 但是返回的迭代对象经过迭代(遍历)后会置空，无法再次迭代
+        // let keyValuelist = set.entries()
+
+        // // 返回一个新的迭代器对象，为set内的所有key数组，其实也就是value的别名
+        // // 可以看成是数组的keys遍历方法相同的返回值，并且返回的值可被forEach和for...of等方法遍历
+        // // 但是返回的迭代对象经过迭代(遍历)后会置空，无法再次迭代
+        // let keyList = set.keys()
+
+        // // 返回一个新的迭代器对象，为set内的所有value数组，也就是按插入顺序生成 Set 对象中每个元素的值。
+        // // 可以看成是数组的values遍历方法相同的返回值，并且返回的值可被forEach和for...of等方法遍历
+        // // 但是返回的迭代对象经过迭代(遍历)后会置空，无法再次迭代
+        // let valueList = set.values()
+
+        // // 按顺序遍历set对象的所有元素
+        // set.forEach(el => console.log(el))
+
+        // // 返回一个新的迭代器对象，该对象按插入顺序生成 Set 对象中每个元素的值。
+        // // 可被forEach和for...of等方法遍历
+        // // 但是返回的迭代对象经过迭代(遍历)后会置空，无法再次迭代
+        // const iterator1 = set[Symbol.iterator]();
+        // iterator1.forEach(el => console.log(el)); // 遍历后迭代器对象会被置空
+        // // for(let k of iterator1){
+        // //     console.log(k)
+        // // }
+
+        // // 从 Set 对象中移除所有元素。
+        // set.clear()
+
+        // // 移除与 value 关联的元素，并返回一个布尔值来表示是否移除成功。
+        // let state = set.delete(value)
 
 
+        // 可迭代性与唯一性
+        // 在Set中，所有正确添加到Set中的值都是可迭代的，并且添加到Set中的值都是唯一的。
+        // Set从某种层面上来讲，是一个去重之后的唯一值数组，你可以感觉到它与数组很像，例如：
+        let set = new Set([1, 2, 3, 4]);
+        let list = [1, 2, 3, 4]
+
+        let has = set.has(1);
+        let state = list.includes(1)
+        console.log(has, state)
+
+        set.add(5)
+        list.push(5)
+        console.log(set, list)
+
+        let arr = [...set]
+        let arr2 = [...list]
+        console.log(arr, arr2)
 
 
 
